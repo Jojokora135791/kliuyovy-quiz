@@ -1,0 +1,12 @@
+node_modules
+dist
+dist-ssr
+*.local
+.DS_Store
+.vercel
+*.tsbuildinfo
+.playwright-mcp
+tmp/
+
+# исходные презентации — большие бинарники, не часть веб-приложения
+*.pptx

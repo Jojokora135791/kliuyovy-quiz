@@ -1,0 +1,3 @@
+{
+  "rewrites": [{ "source": "/((?!media/|quizzes/|assets/).*)", "destination": "/index.html" }]
+}
