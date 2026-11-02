@@ -1,12 +1,13 @@
 import { useEffect } from 'react'
-import type { Round, Question } from '../../types/quiz'
+import type { Round } from '../../types/quiz'
+import { nominalLabel, questionNominal, type QuestionLocation } from '../../lib/gameLogic'
 import { MediaRenderer } from './MediaRenderer'
 import { playSound } from '../../lib/sound'
 import { useCountdown } from '../../lib/useCountdown'
 
 type Props = {
   round: Round
-  question: Question
+  location: QuestionLocation
   openSoundUrl?: string
   timerEndSoundUrl?: string
   playSounds: boolean
@@ -15,9 +16,15 @@ type Props = {
   onTimerEnd?: () => void
 }
 
+export function questionEyebrow(round: Round, location: QuestionLocation) {
+  if (round.type === 'music') return `Трек ${location.index + 1}`
+  if (round.type === 'casino') return `🎰 ${location.categoryTitle}`
+  return `${location.categoryTitle} · ${nominalLabel(questionNominal(location.question, location.index))}`
+}
+
 export function QuestionScreen({
   round,
-  question,
+  location,
   openSoundUrl,
   timerEndSoundUrl,
   playSounds,
@@ -25,6 +32,7 @@ export function QuestionScreen({
   timerEndsAt,
   onTimerEnd,
 }: Props) {
+  const { question } = location
   const remaining = useCountdown(timerRunning, timerEndsAt, () => {
     if (playSounds) playSound(timerEndSoundUrl)
     onTimerEnd?.()
@@ -37,29 +45,31 @@ export function QuestionScreen({
   }, [question.id])
 
   return (
-    <div className="flex flex-col items-center justify-center h-full gap-8 px-12 text-center">
-      <div className="text-xl md:text-2xl font-semibold text-quiz-accent uppercase tracking-wide">
-        {round.title} · {question.price}
-      </div>
+    <div className="relative flex flex-col items-center justify-center w-full h-full gap-8 px-12 text-center">
+      <div className="eyebrow">{questionEyebrow(round, location)}</div>
       {remaining !== null && (
-        <div className={`text-6xl font-black ${remaining <= 5 ? 'text-red-500 animate-pulse' : 'text-quiz-primary'}`}>
+        <div
+          className={`absolute top-6 right-8 glass rounded-full w-24 h-24 flex items-center justify-center text-5xl font-black ${
+            remaining <= 5 ? 'text-red-400 animate-pulse border-red-400/60' : 'text-quiz-primary'
+          }`}
+        >
           {remaining}
         </div>
       )}
-      <p className="text-3xl md:text-5xl font-bold max-w-5xl leading-snug">{question.text}</p>
-      {question.media && <MediaRenderer media={question.media} />}
-      {round.type === 'choice' && question.options && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-3xl">
-          {question.options.map((opt, i) => (
-            <div
-              key={i}
-              className="rounded-xl border-2 border-quiz-accent/60 py-4 px-6 text-xl font-semibold bg-quiz-primary/10"
-            >
-              {String.fromCharCode(65 + i)}. {opt}
-            </div>
-          ))}
-        </div>
+      {question.text && (
+        <p
+          className={`font-bold max-w-6xl leading-snug whitespace-pre-line ${
+            question.text.length > 220
+              ? 'text-[clamp(1.25rem,2.4vw,2.6rem)]'
+              : question.text.length > 110
+                ? 'text-[clamp(1.5rem,3vw,3.2rem)]'
+                : 'text-[clamp(1.875rem,3.6vw,3.75rem)]'
+          }`}
+        >
+          {question.text}
+        </p>
       )}
+      {question.media && <MediaRenderer media={question.media} />}
     </div>
   )
 }

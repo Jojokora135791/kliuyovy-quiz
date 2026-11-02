@@ -1,4 +1,4 @@
-import type { Quiz, Round, Category, Question } from '../types/quiz'
+import type { Quiz, Round, Category, Question, Room } from '../types/quiz'
 
 function uid(prefix: string) {
   return `${prefix}-${Math.random().toString(36).slice(2, 9)}`
@@ -44,8 +44,7 @@ export function addRound(quiz: Quiz): Quiz {
   const round: Round = {
     id: uid('round'),
     title: 'Новый раунд',
-    type: 'jeopardy',
-    priceScale: [1, 2, 3, 4, 5],
+    type: 'trickOrTreat',
     categories: [{ id: uid('cat'), title: 'Новая категория', questions: [] }],
   }
   return { ...quiz, rounds: [...quiz.rounds, round] }
@@ -86,10 +85,10 @@ export function moveCategory(quiz: Quiz, roundId: string, categoryId: string, di
   })
 }
 
-export function addQuestion(quiz: Quiz, roundId: string, categoryId: string, price: number): Quiz {
+export function addQuestion(quiz: Quiz, roundId: string, categoryId: string): Quiz {
   return mapCategory(quiz, roundId, categoryId, (c) => ({
     ...c,
-    questions: [...c.questions, { id: uid('q'), price, text: 'Новый вопрос' }],
+    questions: [...c.questions, { id: uid('q'), price: c.questions.length + 1, text: 'Новый вопрос' }],
   }))
 }
 
@@ -115,4 +114,21 @@ export function moveQuestion(
     ;[questions[idx], questions[next]] = [questions[next], questions[idx]]
     return { ...c, questions }
   })
+}
+
+export function addRoom(quiz: Quiz): Quiz {
+  return { ...quiz, rooms: [...quiz.rooms, { id: uid('room'), title: 'Новая комната' }] }
+}
+
+export function updateRoom(quiz: Quiz, roomId: string, patch: Partial<Room>): Quiz {
+  return { ...quiz, rooms: quiz.rooms.map((r) => (r.id === roomId ? { ...r, ...patch } : r)) }
+}
+
+/** Удаляет комнату; раунды, привязанные к ней, становятся общими. */
+export function removeRoom(quiz: Quiz, roomId: string): Quiz {
+  return {
+    ...quiz,
+    rooms: quiz.rooms.filter((r) => r.id !== roomId),
+    rounds: quiz.rounds.map((r) => (r.roomId === roomId ? { ...r, roomId: undefined } : r)),
+  }
 }

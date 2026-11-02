@@ -1,4 +1,4 @@
-import type { Quiz } from '../../types/quiz'
+import type { Quiz, Room } from '../../types/quiz'
 import { Field } from './Field'
 
 type Props = {
@@ -6,9 +6,12 @@ type Props = {
   onChange: (patch: Partial<Quiz>) => void
   onThemeChange: (patch: Partial<Quiz['theme']>) => void
   onSoundsChange: (patch: Partial<Quiz['sounds']>) => void
+  onAddRoom: () => void
+  onRoomChange: (roomId: string, patch: Partial<Room>) => void
+  onRemoveRoom: (roomId: string) => void
 }
 
-export function QuizSettingsForm({ quiz, onChange, onThemeChange, onSoundsChange }: Props) {
+export function QuizSettingsForm({ quiz, onChange, onThemeChange, onSoundsChange, onAddRoom, onRoomChange, onRemoveRoom }: Props) {
   return (
     <div className="flex flex-col gap-4 max-w-xl">
       <h2 className="text-lg font-bold">Настройки квиза</h2>
@@ -25,6 +28,40 @@ export function QuizSettingsForm({ quiz, onChange, onThemeChange, onSoundsChange
           onChange={(e) => onChange({ defaultTimerSeconds: Number(e.target.value) || 0 })}
         />
       </Field>
+
+      <h3 className="font-semibold mt-2">Комнаты</h3>
+      <p className="text-xs opacity-60 -mt-2">
+        Ведущий выбирает комнату при старте игры. Раунд, привязанный к комнате, играется только в ней; остальные — общие.
+      </p>
+      {quiz.rooms.map((room) => (
+        <div key={room.id} className="flex flex-col gap-2 border border-white/10 rounded-lg p-3">
+          <div className="flex gap-2">
+            <input className="input" value={room.title} onChange={(e) => onRoomChange(room.id, { title: e.target.value })} />
+            <button
+              type="button"
+              className="text-red-400 text-sm px-2"
+              onClick={() => confirm(`Удалить комнату «${room.title}»?`) && onRemoveRoom(room.id)}
+            >
+              ✕
+            </button>
+          </div>
+          <input
+            className="input text-sm"
+            placeholder="Подпись (необязательно)"
+            value={room.subtitle ?? ''}
+            onChange={(e) => onRoomChange(room.id, { subtitle: e.target.value || undefined })}
+          />
+          <input
+            className="input text-sm"
+            placeholder="Свой фон комнаты (необязательно)"
+            value={room.background ?? ''}
+            onChange={(e) => onRoomChange(room.id, { background: e.target.value || undefined })}
+          />
+        </div>
+      ))}
+      <button type="button" className="btn-secondary text-sm self-start" onClick={onAddRoom}>
+        + комната
+      </button>
 
       <h3 className="font-semibold mt-2">Оформление</h3>
       <Field label="Фон квиза (URL картинки или CSS-цвет/градиент)">
@@ -46,14 +83,14 @@ export function QuizSettingsForm({ quiz, onChange, onThemeChange, onSoundsChange
         <Field label="Основной цвет">
           <input
             type="color"
-            value={quiz.theme.primaryColor ?? '#ff8c1a'}
+            value={quiz.theme.primaryColor ?? '#ff8a3d'}
             onChange={(e) => onThemeChange({ primaryColor: e.target.value })}
           />
         </Field>
         <Field label="Акцентный цвет">
           <input
             type="color"
-            value={quiz.theme.accentColor ?? '#9b30ff'}
+            value={quiz.theme.accentColor ?? '#a77bff'}
             onChange={(e) => onThemeChange({ accentColor: e.target.value })}
           />
         </Field>

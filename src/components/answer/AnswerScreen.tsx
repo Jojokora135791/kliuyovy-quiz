@@ -1,48 +1,36 @@
 import { useEffect } from 'react'
-import type { Round, Question } from '../../types/quiz'
+import type { Round } from '../../types/quiz'
+import type { QuestionLocation } from '../../lib/gameLogic'
 import { MediaRenderer } from '../question/MediaRenderer'
+import { questionEyebrow } from '../question/QuestionScreen'
 import { playSound } from '../../lib/sound'
 
 type Props = {
   round: Round
-  question: Question
+  location: QuestionLocation
   revealSoundUrl?: string
   playSounds: boolean
 }
 
-export function AnswerScreen({ round, question, revealSoundUrl, playSounds }: Props) {
+export function AnswerScreen({ round, location, revealSoundUrl, playSounds }: Props) {
+  const { question } = location
   useEffect(() => {
     if (playSounds) playSound(revealSoundUrl)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [question.id])
 
   return (
-    <div className="flex flex-col items-center justify-center h-full gap-8 px-12 text-center">
-      <div className="text-xl md:text-2xl font-semibold text-quiz-accent uppercase tracking-wide">Ответ</div>
-      <p className="text-2xl md:text-3xl font-medium max-w-4xl text-quiz-primary/80">{question.text}</p>
-
-      {round.type === 'choice' && question.options ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-3xl">
-          {question.options.map((opt, i) => {
-            const isCorrect = i === question.correctOptionIndex
-            return (
-              <div
-                key={i}
-                className={`rounded-xl border-2 py-4 px-6 text-xl font-semibold transition-colors ${
-                  isCorrect
-                    ? 'border-green-400 bg-green-500/30 text-white'
-                    : 'border-quiz-accent/40 bg-quiz-primary/5 opacity-70'
-                }`}
-              >
-                {String.fromCharCode(65 + i)}. {opt}
-              </div>
-            )
-          })}
-        </div>
-      ) : (
-        <p className="text-4xl md:text-6xl font-black max-w-5xl leading-snug">{question.answerText}</p>
+    <div className="flex flex-col items-center justify-center w-full h-full gap-6 px-12 text-center">
+      <div className="eyebrow">{questionEyebrow(round, location)} · ответ</div>
+      {round.type !== 'music' && question.text && (
+        <p className="text-xl md:text-2xl font-medium max-w-4xl opacity-70">{question.text}</p>
       )}
-
+      <p className="stage-title text-5xl md:text-7xl max-w-6xl leading-tight">{question.answerText}</p>
+      {round.type === 'music' && question.author && (
+        <div className="glass rounded-2xl px-8 py-3 text-2xl md:text-3xl">
+          Загадал(а): <span className="font-black text-quiz-accent">{question.author}</span>
+        </div>
+      )}
       {question.answerMedia && <MediaRenderer media={question.answerMedia} />}
     </div>
   )
