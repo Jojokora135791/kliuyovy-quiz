@@ -772,33 +772,53 @@
           "questions": [
             {
               "id": "r22-c4-q1",
-              "text": "Вопрос 1 — заполнить",
-              "answerText": "Ответ — заполнить",
-              "price": 2
+              "text": "Кого человек пытался изобразить в этом костюме?",
+              "answerText": "Рафаэль из «Черепашек-ниндзя»",
+              "price": 2,
+              "media": {
+                "type": "image",
+                "url": "/media/round2-2-avito/1.png"
+              }
             },
             {
               "id": "r22-c4-q2",
-              "text": "Вопрос 2 — заполнить",
-              "answerText": "Ответ — заполнить",
-              "price": 4
+              "text": "Кого человек пытался изобразить в этом костюме?",
+              "answerText": "Микки Маус",
+              "price": 4,
+              "media": {
+                "type": "image",
+                "url": "/media/round2-2-avito/2.png"
+              }
             },
             {
               "id": "r22-c4-q3",
-              "text": "Вопрос 3 — заполнить",
-              "answerText": "Ответ — заполнить",
-              "price": 6
+              "text": "Кого человек пытался изобразить в этом костюме?",
+              "answerText": "Лунтик",
+              "price": 6,
+              "media": {
+                "type": "image",
+                "url": "/media/round2-2-avito/3.png"
+              }
             },
             {
               "id": "r22-c4-q4",
-              "text": "Вопрос 4 — заполнить",
-              "answerText": "Ответ — заполнить",
-              "price": 8
+              "text": "Кого человек пытался изобразить в этом костюме?",
+              "answerText": "Ёжик из «Смешариков»",
+              "price": 8,
+              "media": {
+                "type": "image",
+                "url": "/media/round2-2-avito/4.png"
+              }
             },
             {
               "id": "r22-c4-q5",
-              "text": "Вопрос 5 — заполнить",
-              "answerText": "Ответ — заполнить",
-              "price": 10
+              "text": "Кого человек пытался изобразить в этом костюме?",
+              "answerText": "Волдеморт",
+              "price": 10,
+              "media": {
+                "type": "image",
+                "url": "/media/round2-2-avito/5.png"
+              }
             }
           ]
         },
