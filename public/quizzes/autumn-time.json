@@ -36,21 +36,21 @@
             {
               "id": "r1h-q1",
               "text": "Трек №1",
-              "author": "Лиза Ф.",
-              "answerText": "Monetochka - Заново",
+              "author": "Полина М.",
+              "answerText": "The Mamas & The Papas - California Dreamin'",
               "media": {
                 "type": "embed",
-                "url": "https://open.spotify.com/track/2CgaV8P0xBKABylaWcjkZy"
+                "url": "https://open.spotify.com/track/1ZEOIhSn6BKErV59bIgn76"
               }
             },
             {
               "id": "r1h-q2",
               "text": "Трек №2",
-              "author": "Даша В.",
-              "answerText": "Bruno Coulais, Mathilde Pellegrini, Laurent Petitgirard, Hungarian Symphony Orchestra Budapest, Hélène Breschand - Exploration",
+              "author": "Таня Саб.",
+              "answerText": "The Marías - Hush",
               "media": {
                 "type": "embed",
-                "url": "https://open.spotify.com/track/4mavPLLZuKFd86esmhhqqy"
+                "url": "https://music.yandex.ru/album/16414629/track/81835751"
               }
             },
             {
@@ -66,76 +66,6 @@
             {
               "id": "r1h-q4",
               "text": "Трек №4",
-              "author": "Олег Сыч.",
-              "answerText": "Brozer - Match nul",
-              "media": {
-                "type": "embed",
-                "url": "https://open.spotify.com/track/4MIZK48xIGOxjKKu6SBXAT"
-              }
-            },
-            {
-              "id": "r1h-q5",
-              "text": "Трек №5",
-              "author": "Артем Кл.",
-              "answerText": "CUPSIZE - Верёвка",
-              "media": {
-                "type": "embed",
-                "url": "https://open.spotify.com/track/4RzPqKF0oWLGX9D9jq6P4F"
-              }
-            },
-            {
-              "id": "r1h-q6",
-              "text": "Трек №6",
-              "author": "Олег Кл.",
-              "answerText": "тёмный принц, ashleyrossmith - Охота на уток",
-              "media": {
-                "type": "embed",
-                "url": "https://open.spotify.com/track/3TJPzSuGL9fL6R5O6tpA7m"
-              }
-            },
-            {
-              "id": "r1h-q7",
-              "text": "Трек №7",
-              "author": "Полина М.",
-              "answerText": "The Mamas & The Papas - California Dreamin'",
-              "media": {
-                "type": "embed",
-                "url": "https://open.spotify.com/track/1ZEOIhSn6BKErV59bIgn76"
-              }
-            },
-            {
-              "id": "r1h-q8",
-              "text": "Трек №8",
-              "author": "Таня Саб.",
-              "answerText": "The Marías - Hush",
-              "media": {
-                "type": "embed",
-                "url": "https://music.yandex.ru/album/16414629/track/81835751"
-              }
-            },
-            {
-              "id": "r1h-q9",
-              "text": "Трек №9",
-              "author": "Олег Саб.",
-              "answerText": "Noize MC - Светлая полоса",
-              "media": {
-                "type": "embed",
-                "url": "https://music.yandex.ru/album/33496807/track/131651139"
-              }
-            },
-            {
-              "id": "r1h-q10",
-              "text": "Трек №10",
-              "author": "Олег Сыч.",
-              "answerText": "Endspiel, TumaniYO - ABRACADABRA",
-              "media": {
-                "type": "embed",
-                "url": "https://open.spotify.com/track/6eIm89g2iCvjHDnRSJs7Ag"
-              }
-            },
-            {
-              "id": "r1h-q11",
-              "text": "Трек №11",
               "author": "Артем Кл.",
               "answerText": "SABU - SAD",
               "media": {
@@ -144,18 +74,8 @@
               }
             },
             {
-              "id": "r1h-q12",
-              "text": "Трек №12",
-              "author": "Лиза Ф.",
-              "answerText": "Monetochka - Папина любовница",
-              "media": {
-                "type": "embed",
-                "url": "https://open.spotify.com/track/0IZQE4nwNoCJmJ5wm8UY2T"
-              }
-            },
-            {
-              "id": "r1h-q13",
-              "text": "Трек №13",
+              "id": "r1h-q5",
+              "text": "Трек №5",
               "author": "Миша С.",
               "answerText": "Триагрутрика - Облака",
               "media": {
@@ -164,28 +84,28 @@
               }
             },
             {
-              "id": "r1h-q14",
-              "text": "Трек №14",
-              "author": "Миша С.",
-              "answerText": "Скриптонит - Не надо меня узнавать",
-              "media": {
-                "type": "youtube",
-                "url": "https://youtu.be/7LzF-JU04vs"
-              }
-            },
-            {
-              "id": "r1h-q15",
-              "text": "Трек №15",
-              "author": "Саша О.",
-              "answerText": "Baltic Sea Philharmonic, Kristjan Järvi - Richter: On The Nature Of Daylight (Orchestra Version)",
+              "id": "r1h-q6",
+              "text": "Трек №6",
+              "author": "Олег Саб.",
+              "answerText": "Noize MC - Светлая полоса",
               "media": {
                 "type": "embed",
-                "url": "https://music.yandex.ru/album/17219527/track/88465521"
+                "url": "https://music.yandex.ru/album/33496807/track/131651139"
               }
             },
             {
-              "id": "r1h-q16",
-              "text": "Трек №16",
+              "id": "r1h-q7",
+              "text": "Трек №7",
+              "author": "Лиза Ф.",
+              "answerText": "Monetochka - Заново",
+              "media": {
+                "type": "embed",
+                "url": "https://open.spotify.com/track/2CgaV8P0xBKABylaWcjkZy"
+              }
+            },
+            {
+              "id": "r1h-q8",
+              "text": "Трек №8",
               "author": "Саша О.",
               "answerText": "Гриша Ургант - Показалось (из к/ф «Предпоследняя жизнь»)",
               "media": {
@@ -194,13 +114,93 @@
               }
             },
             {
-              "id": "r1h-q17",
-              "text": "Трек №17",
+              "id": "r1h-q9",
+              "text": "Трек №9",
               "author": "Олег Кл.",
               "answerText": "GENER8ION, Yung Lean - STORM II",
               "media": {
                 "type": "embed",
                 "url": "https://open.spotify.com/track/4ipD5CMmWkehabGlAGTOBB"
+              }
+            },
+            {
+              "id": "r1h-q10",
+              "text": "Трек №10",
+              "author": "Даша В.",
+              "answerText": "Bruno Coulais, Mathilde Pellegrini, Laurent Petitgirard, Hungarian Symphony Orchestra Budapest, Hélène Breschand - Exploration",
+              "media": {
+                "type": "embed",
+                "url": "https://open.spotify.com/track/4mavPLLZuKFd86esmhhqqy"
+              }
+            },
+            {
+              "id": "r1h-q11",
+              "text": "Трек №11",
+              "author": "Олег Кл.",
+              "answerText": "тёмный принц, ashleyrossmith - Охота на уток",
+              "media": {
+                "type": "embed",
+                "url": "https://open.spotify.com/track/3TJPzSuGL9fL6R5O6tpA7m"
+              }
+            },
+            {
+              "id": "r1h-q12",
+              "text": "Трек №12",
+              "author": "Олег Сыч.",
+              "answerText": "Brozer - Match nul",
+              "media": {
+                "type": "embed",
+                "url": "https://open.spotify.com/track/4MIZK48xIGOxjKKu6SBXAT"
+              }
+            },
+            {
+              "id": "r1h-q13",
+              "text": "Трек №13",
+              "author": "Миша С.",
+              "answerText": "Скриптонит - Не надо меня узнавать",
+              "media": {
+                "type": "youtube",
+                "url": "https://youtu.be/7LzF-JU04vs"
+              }
+            },
+            {
+              "id": "r1h-q14",
+              "text": "Трек №14",
+              "author": "Артем Кл.",
+              "answerText": "CUPSIZE - Верёвка",
+              "media": {
+                "type": "embed",
+                "url": "https://open.spotify.com/track/4RzPqKF0oWLGX9D9jq6P4F"
+              }
+            },
+            {
+              "id": "r1h-q15",
+              "text": "Трек №15",
+              "author": "Олег Сыч.",
+              "answerText": "Endspiel, TumaniYO - ABRACADABRA",
+              "media": {
+                "type": "embed",
+                "url": "https://open.spotify.com/track/6eIm89g2iCvjHDnRSJs7Ag"
+              }
+            },
+            {
+              "id": "r1h-q16",
+              "text": "Трек №16",
+              "author": "Лиза Ф.",
+              "answerText": "Monetochka - Папина любовница",
+              "media": {
+                "type": "embed",
+                "url": "https://open.spotify.com/track/0IZQE4nwNoCJmJ5wm8UY2T"
+              }
+            },
+            {
+              "id": "r1h-q17",
+              "text": "Трек №17",
+              "author": "Саша О.",
+              "answerText": "Baltic Sea Philharmonic, Kristjan Järvi - Richter: On The Nature Of Daylight (Orchestra Version)",
+              "media": {
+                "type": "embed",
+                "url": "https://music.yandex.ru/album/17219527/track/88465521"
               }
             }
           ]
@@ -355,31 +355,31 @@
           "questions": [
             {
               "id": "r21-c1-q1",
-              "text": "Хозяин главного авторынка внезапно погибает в подстроенной «разборке» — всё устроил родной брат, мечтавший прибрать к рукам точки и крышу. Сын-наследник, решив, что сам виноват в его смерти, сбегает в соседний город и устраивается в шиномонтажку к двум друганам. Повзрослев, он возвращается, разруливает вопрос с братом на стрелке и забирает рынок себе.",
+              "text": "Смотрящего по главному авторынку убирают в подстроенной «разборке» — всё организовал родной брат, спавший и видевший, как прибрать к рукам точки и общак. Пацан-наследник, решив, что сам виноват в смерти отца, срывается в другой город и перекантовывается в шиномонтажке у двух залётных кентов. Повзрослев, он возвращается, разруливает с дядей вопрос на стрелке и возвращает себе рынок.",
               "answerText": "Король Лев",
               "price": 1
             },
             {
               "id": "r21-c1-q2",
-              "text": "Пацану из глухой деревни по наследству достаётся золотая печатка пропавшего вора в законе — все братки в округе спят и видят, как бы её заполучить. С компанией из нескольких городов он отправляется через бандитские «земли» в соседнюю область, чтобы расплавить перстень в заводской печи, пока тот не попал обратно к хозяину. По пути компания редеет, но до завода он всё же добирается.",
+              "text": "Пацану из глухой деревни по наследству достаётся печатка сгинувшего авторитета — все окрестные братки спят и видят, как бы её отжать. С кентами из нескольких городов он прёт через бандитские земли в соседнюю область, чтобы расплавить перстень в заводской печи, пока тот не вернулся к хозяину. По пути компанию прилично чистят, но до завода он всё-таки доходит.",
               "answerText": "Властелин колец",
               "price": 2
             },
             {
               "id": "r21-c1-q3",
-              "text": "Спившегося афганца-капитана нанимает новый хозяин области — натаскать охрану для разгона «старой гвардии» воров в законе, засевших по понятиям в глухом посёлке. Попав к ним в плен, капитан проникается их кодексом и остаётся жить с ворами. В финале он выходит вместе со стариками против вооружённого до зубов ОМОНа нового хозяина — почти все гибнут, но даже победитель смотрит на них с уважением.",
+              "text": "Спившегося афганца-капитана нанимает новый хозяин области — натаскать охрану, чтобы разогнать «старую гвардию» воров в законе, засевших по понятиям в глухом посёлке. Угодив к ним в плен, капитан проникается их кодексом и остаётся жить с ворами. В финале он выходит вместе со стариками против вооружённого до зубов ОМОНа нового хозяина — почти все ложатся, но даже победитель смотрит на них с уважением.",
               "answerText": "Последний самурай",
               "price": 3
             },
             {
               "id": "r21-c1-q4",
-              "text": "Из будущего в девяностые приезжает невозмутимый киллер на угнанной «девятке» — заказ: завалить обычную продавщицу из ларька, чей ещё не родившийся сын через двадцать лет поднимет бунт против захвативших всё олигархов. Следом присылают второго, попроще — защитить её. Полфильма они долбят друг друга из обрезов по всему городу, а выживает, конечно, тот, что попроще и понадёжнее.",
+              "text": "Из будущего в девяностые вкатывается несокрушимый киллер-терминатор от взбесившихся машин — заказ: завалить обычную продавщицу из ларька, чей ещё не родившийся сын через двадцать лет поднимет бунт против них. Следом присылают простого бойца-срочника — прикрыть её. Полгорода они долбят друг друга из обрезов, а терминатора в итоге расплющивает прессом на заводе.",
               "answerText": "Терминатор",
               "price": 4
             },
             {
               "id": "r21-c1-q5",
-              "text": "Честного директора завода подставляет сын губернатора, мечтающий прибрать предприятие себе, — жену с сыном убивают, а самого бросают по сфабрикованному делу на зону. Там он становится лучшим бойцом в подпольных «боях без правил» и зарабатывает погоняло и уважение. Когда финал турнира привозят прямо в областной центр, он выходит против охраны губернаторского сынка на глазах у всего города — и мстит.",
+              "text": "Честного полевого командира подставляет сын главного смотрящего, которого отец хотел оставить за старшими, а не за своим, — жену с сыном валят, самого бросают по сфабрикованному делу в зону. Там он выбивается в лучшие бойцы подпольных «боёв без правил» и зарабатывает погоняло и уважение всей зоны. Когда финальный сходняк турнира привозят в самый центр, он выходит против охраны новоиспечённого хозяина на глазах у всех — и мстит.",
               "answerText": "Гладиатор",
               "price": 5
             }

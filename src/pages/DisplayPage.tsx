@@ -30,6 +30,7 @@ export function DisplayPage() {
         quiz={quiz}
         game={game}
         playSounds
+        hideSpoilerMedia
         footer={showScoreboard && <Scoreboard teams={game.teams} activeTeamId={activeTeamId} />}
       />
     </div>

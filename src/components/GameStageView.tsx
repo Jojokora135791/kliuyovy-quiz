@@ -21,6 +21,8 @@ type Props = {
   onSelectQuestion?: (questionId: string) => void
   onTimerEnd?: () => void
   footer?: ReactNode
+  /** Табло: скрыть Spotify/YouTube-плеер на экране вопроса (видно название/исполнителя) */
+  hideSpoilerMedia?: boolean
 }
 
 export function GameStageView({
@@ -31,6 +33,7 @@ export function GameStageView({
   onSelectQuestion,
   onTimerEnd,
   footer,
+  hideSpoilerMedia = false,
 }: Props) {
   const round = quiz.rounds.find((r) => r.id === game.currentRoundId) ?? null
   const room = quiz.rooms.find((r) => r.id === game.roomId) ?? null
@@ -76,6 +79,7 @@ export function GameStageView({
             timerRunning={game.timerRunning}
             timerEndsAt={game.timerEndsAt}
             onTimerEnd={onTimerEnd}
+            hideSpoilerMedia={hideSpoilerMedia}
           />
         ) : null
       break

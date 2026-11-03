@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import type { Round } from '../../types/quiz'
 import { nominalLabel, questionNominal, type QuestionLocation } from '../../lib/gameLogic'
 import { MediaRenderer } from './MediaRenderer'
+import { SecretMediaPlaceholder } from './SecretMediaPlaceholder'
 import { playSound } from '../../lib/sound'
 import { useCountdown } from '../../lib/useCountdown'
 
@@ -14,6 +15,8 @@ type Props = {
   timerRunning: boolean
   timerEndsAt: number | null
   onTimerEnd?: () => void
+  /** Табло: не показывать Spotify/YouTube-плеер (там видно название/исполнителя) — звук уже играет у ведущего. */
+  hideSpoilerMedia?: boolean
 }
 
 export function questionEyebrow(round: Round, location: QuestionLocation) {
@@ -31,6 +34,7 @@ export function QuestionScreen({
   timerRunning,
   timerEndsAt,
   onTimerEnd,
+  hideSpoilerMedia = false,
 }: Props) {
   const { question } = location
   const remaining = useCountdown(timerRunning, timerEndsAt, () => {
@@ -69,7 +73,12 @@ export function QuestionScreen({
           {question.text}
         </p>
       )}
-      {question.media && <MediaRenderer media={question.media} />}
+      {question.media &&
+        (hideSpoilerMedia && (question.media.type === 'youtube' || question.media.type === 'embed') ? (
+          <SecretMediaPlaceholder />
+        ) : (
+          <MediaRenderer media={question.media} />
+        ))}
     </div>
   )
 }
