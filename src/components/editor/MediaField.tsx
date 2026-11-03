@@ -11,6 +11,7 @@ const MEDIA_TYPES: { value: MediaType; label: string }[] = [
   { value: 'audio', label: 'Аудио' },
   { value: 'video', label: 'Видео' },
   { value: 'youtube', label: 'YouTube' },
+  { value: 'embed', label: 'Spotify / Яндекс.Музыка' },
 ]
 
 export function MediaField({ label, media, onChange }: Props) {
@@ -45,7 +46,11 @@ export function MediaField({ label, media, onChange }: Props) {
         <input
           className="flex-1 bg-white/10 rounded px-2 py-1 text-sm"
           placeholder={
-            media.type === 'youtube' ? 'https://youtu.be/...' : 'URL или /media/файл (положи файл в /public/media)'
+            media.type === 'youtube'
+              ? 'https://youtu.be/...'
+              : media.type === 'embed'
+                ? 'https://open.spotify.com/track/... или https://music.yandex.ru/album/.../track/...'
+                : 'URL или /media/файл (положи файл в /public/media)'
           }
           value={media.url}
           onChange={(e) => onChange({ ...media, url: e.target.value })}

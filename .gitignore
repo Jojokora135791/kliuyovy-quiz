@@ -7,6 +7,7 @@ dist-ssr
 *.tsbuildinfo
 .playwright-mcp
 tmp/
+.claude/settings.local.json
 
 # исходные презентации — большие бинарники, не часть веб-приложения
 *.pptx

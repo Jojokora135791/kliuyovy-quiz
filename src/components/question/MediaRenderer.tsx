@@ -6,6 +6,17 @@ function extractYouTubeId(url: string): string | null {
   return match ? match[1] : null
 }
 
+/** Превращает обычную ссылку на трек (Spotify/Яндекс.Музыка) в адрес их официального embed-плеера. */
+function toEmbedUrl(url: string): string {
+  const spotify = url.match(/open\.spotify\.com\/(?:embed\/)?track\/([a-zA-Z0-9]+)/)
+  if (spotify) return `https://open.spotify.com/embed/track/${spotify[1]}?utm_source=generator`
+
+  const yandex = url.match(/music\.yandex\.ru\/album\/(\d+)\/track\/(\d+)/)
+  if (yandex) return `https://music.yandex.ru/iframe/#track/${yandex[2]}/${yandex[1]}`
+
+  return url
+}
+
 export function MediaRenderer({ media }: { media: Media }) {
   if (!media.url) return null
   switch (media.type) {
@@ -40,6 +51,24 @@ export function MediaRenderer({ media }: { media: Media }) {
                 end: media.youtubeEnd,
               },
             }}
+          />
+        </div>
+      )
+    }
+    case 'embed': {
+      const isYandex = media.url.includes('yandex')
+      const src = toEmbedUrl(media.url)
+      return (
+        <div className="mx-auto w-full max-w-xl">
+          <iframe
+            key={src}
+            src={src}
+            width="100%"
+            height={isYandex ? 200 : 152}
+            style={{ border: 0 }}
+            allow="autoplay; encrypted-media; clipboard-write; fullscreen; picture-in-picture"
+            loading="lazy"
+            className="rounded-xl"
           />
         </div>
       )

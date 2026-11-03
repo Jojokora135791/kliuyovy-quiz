@@ -1,4 +1,4 @@
-export type MediaType = 'image' | 'audio' | 'video' | 'youtube'
+export type MediaType = 'image' | 'audio' | 'video' | 'youtube' | 'embed'
 
 export type Media = {
   type: MediaType
