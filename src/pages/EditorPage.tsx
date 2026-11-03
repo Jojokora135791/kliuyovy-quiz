@@ -13,6 +13,7 @@ import { QuestionForm } from '../components/editor/QuestionForm'
 import { RulesScreen } from '../components/rules/RulesScreen'
 import { QuestionScreen } from '../components/question/QuestionScreen'
 import { AnswerScreen } from '../components/answer/AnswerScreen'
+import { findQuestionLocation } from '../lib/gameLogic'
 
 export function EditorPage() {
   const quizList = useQuizStore((s) => s.quizList)
@@ -85,6 +86,7 @@ export function EditorPage() {
     round && 'categoryId' in selection ? round.categories.find((c) => c.id === selection.categoryId) : undefined
   const question =
     category && selection.kind === 'question' ? category.questions.find((q) => q.id === selection.questionId) : undefined
+  const location = question ? findQuestionLocation(draft, question.id) : null
 
   return (
     <div className="h-screen w-screen flex flex-col font-quiz bg-black/95 text-white">
@@ -136,11 +138,15 @@ export function EditorPage() {
               onChange={(patch) => mutate((q) => M.updateQuiz(q, patch))}
               onThemeChange={(patch) => mutate((q) => M.updateTheme(q, patch))}
               onSoundsChange={(patch) => mutate((q) => M.updateSounds(q, patch))}
+              onAddRoom={() => mutate((q) => M.addRoom(q))}
+              onRoomChange={(roomId, patch) => mutate((q) => M.updateRoom(q, roomId, patch))}
+              onRemoveRoom={(roomId) => mutate((q) => M.removeRoom(q, roomId))}
             />
           )}
           {selection.kind === 'round' && round && (
             <RoundForm
               round={round}
+              rooms={draft.rooms}
               onChange={(patch) => mutate((q) => M.mapRound(q, round.id, (r) => ({ ...r, ...patch })))}
             />
           )}
@@ -165,22 +171,25 @@ export function EditorPage() {
           <h2 className="text-sm font-bold opacity-60 uppercase tracking-wide">Предпросмотр</h2>
           <div
             className="aspect-video rounded-xl overflow-hidden border border-white/10 relative bg-black/40"
-            style={backgroundStyle(round?.background ?? draft.theme.background)}
           >
+            <div className="absolute inset-0" style={backgroundStyle(question?.background ?? round?.background ?? draft.theme.background)} />
+            <div className="absolute inset-0 bg-[#0c0a22]/75" />
+            <div className="absolute inset-0 origin-top-left scale-[0.4] w-[250%] h-[250%] flex">
             {selection.kind === 'round' && round && (
-              <div className="absolute inset-0">
+              <div className="absolute inset-0 flex">
                 <RulesScreen round={round} />
               </div>
             )}
-            {selection.kind === 'question' && round && question && (
-              <div className="absolute inset-0">
+            {selection.kind === 'question' && round && location && (
+              <div className="absolute inset-0 flex">
                 {previewTab === 'question' ? (
-                  <QuestionScreen round={round} question={question} playSounds={false} timerRunning={false} timerEndsAt={null} />
+                  <QuestionScreen round={round} location={location} playSounds={false} timerRunning={false} timerEndsAt={null} />
                 ) : (
-                  <AnswerScreen round={round} question={question} playSounds={false} />
+                  <AnswerScreen round={round} location={location} playSounds={false} />
                 )}
               </div>
             )}
+            </div>
             {selection.kind !== 'round' && selection.kind !== 'question' && (
               <div className="absolute inset-0 flex items-center justify-center text-sm opacity-50 px-6 text-center">
                 Выбери раунд или вопрос слева, чтобы увидеть предпросмотр

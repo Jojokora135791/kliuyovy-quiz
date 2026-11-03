@@ -18,7 +18,8 @@ export function EditorTree({ quiz, selection, onSelect, mutate }: Props) {
       </TreeButton>
 
       {quiz.rounds.map((round, ri) => {
-        const isFlat = round.type === 'warmup' || round.type === 'final'
+        const isFlat = round.type === 'music'
+        const room = quiz.rooms.find((r) => r.id === round.roomId)
         const category = round.categories[0]
 
         return (
@@ -34,7 +35,7 @@ export function EditorTree({ quiz, selection, onSelect, mutate }: Props) {
               disableUp={ri === 0}
               disableDown={ri === quiz.rounds.length - 1}
             >
-              📂 {round.title}
+              📂 {room ? `[${room.title}] ` : ''}{round.title}
             </Row>
 
             {isFlat && category && (
@@ -53,15 +54,13 @@ export function EditorTree({ quiz, selection, onSelect, mutate }: Props) {
                     disableUp={qi === 0}
                     disableDown={qi === category.questions.length - 1}
                   >
-                    {q.price}. {q.text.slice(0, 28) || '(пусто)'}
+                    {qi + 1}. {q.text.slice(0, 28) || '(пусто)'}
                   </Row>
                 ))}
                 <button
                   type="button"
                   className="text-xs opacity-60 hover:opacity-100 text-left py-1"
-                  onClick={() =>
-                    mutate((quiz2) => M.addQuestion(quiz2, round.id, category.id, category.questions.length + 1))
-                  }
+                  onClick={() => mutate((quiz2) => M.addQuestion(quiz2, round.id, category.id))}
                 >
                   + вопрос
                 </button>
@@ -101,18 +100,13 @@ export function EditorTree({ quiz, selection, onSelect, mutate }: Props) {
                           disableUp={qi === 0}
                           disableDown={qi === cat.questions.length - 1}
                         >
-                          {q.price}: {q.text.slice(0, 24) || '(пусто)'}
+                          {round.type === 'trickOrTreat' ? `[${q.price ?? qi + 1}]` : `${qi + 1}.`} {q.text.slice(0, 24) || '(пусто)'}
                         </Row>
                       ))}
                       <button
                         type="button"
                         className="text-xs opacity-60 hover:opacity-100 text-left py-1"
-                        onClick={() => {
-                          const nextPrice =
-                            (round.priceScale ?? []).find((p) => !cat.questions.some((q) => q.price === p)) ??
-                            cat.questions.length + 1
-                          mutate((quiz2) => M.addQuestion(quiz2, round.id, cat.id, nextPrice))
-                        }}
+                        onClick={() => mutate((quiz2) => M.addQuestion(quiz2, round.id, cat.id))}
                       >
                         + вопрос
                       </button>

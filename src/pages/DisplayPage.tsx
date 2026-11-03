@@ -2,14 +2,7 @@ import { useLoadedQuiz } from '../lib/useLoadedQuiz'
 import { useGameStore } from '../stores/gameStore'
 import { GameStageView } from '../components/GameStageView'
 import { Scoreboard } from '../components/scoreboard/Scoreboard'
-
-function toggleFullscreen() {
-  if (!document.fullscreenElement) {
-    document.documentElement.requestFullscreen().catch(() => {})
-  } else {
-    document.exitFullscreen().catch(() => {})
-  }
-}
+import { toggleFullscreen } from '../lib/fullscreen'
 
 /**
  * Табло — только для чтения: ни одно действие здесь не должно писать в gameStore.
@@ -28,19 +21,28 @@ export function DisplayPage() {
   }
 
   const showScoreboard = game.currentScreen !== 'intro' && game.currentScreen !== 'end'
+  const activeTeamId =
+    game.currentScreen === 'question' && game.activeTeamIndex !== null ? game.teams[game.activeTeamIndex]?.id : null
 
   return (
-    <div className="h-screen w-screen flex flex-col font-quiz" onDoubleClick={toggleFullscreen}>
-      {showScoreboard && <Scoreboard teams={game.teams} />}
-      <GameStageView quiz={quiz} game={game} playSounds />
+    <div className="h-screen w-screen flex font-quiz" onDoubleClick={toggleFullscreen}>
+      <GameStageView
+        quiz={quiz}
+        game={game}
+        playSounds
+        footer={showScoreboard && <Scoreboard teams={game.teams} activeTeamId={activeTeamId} />}
+      />
     </div>
   )
 }
 
 function CenteredMessage({ text }: { text: string }) {
   return (
-    <div className="h-screen w-screen flex items-center justify-center text-2xl text-center px-12 font-quiz">
-      {text}
+    <div
+      className="h-screen w-screen flex items-center justify-center text-2xl text-center px-12 font-quiz bg-cover bg-center"
+      style={{ backgroundImage: 'linear-gradient(rgba(12,10,34,.75), rgba(12,10,34,.9)), url(/media/bg-forest.jpg)' }}
+    >
+      <div className="glass rounded-3xl px-10 py-6">{text}</div>
     </div>
   )
 }

@@ -7,11 +7,21 @@ function extractYouTubeId(url: string): string | null {
 }
 
 export function MediaRenderer({ media }: { media: Media }) {
+  if (!media.url) return null
   switch (media.type) {
     case 'image':
-      return <img src={media.url} alt="" className="max-h-[48vh] max-w-full rounded-xl object-contain mx-auto" />
+      return (
+        <img
+          key={media.url}
+          src={media.url}
+          alt=""
+          className="max-h-[52vh] max-w-full rounded-xl object-contain mx-auto shadow-2xl"
+          // файл ещё не подложили — не показываем битую иконку на табло
+          onError={(e) => (e.currentTarget.style.display = 'none')}
+        />
+      )
     case 'audio':
-      return <audio src={media.url} controls autoPlay className="w-full max-w-xl mx-auto" />
+      return <audio src={media.url} controls autoPlay className="w-full max-w-xl mx-auto rounded-full" />
     case 'video':
       return <video src={media.url} controls autoPlay className="max-h-[52vh] max-w-full rounded-xl mx-auto" />
     case 'youtube': {
