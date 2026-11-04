@@ -8,7 +8,9 @@
     "accentColor": "#a77bff"
   },
   "defaultTimerSeconds": 30,
-  "sounds": {},
+  "sounds": {
+    "playlist": "https://open.spotify.com/playlist/3Kxk9Db77vVgqzlsuHXVBd"
+  },
   "rooms": [
     {
       "id": "halloween",

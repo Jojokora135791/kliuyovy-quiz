@@ -1,4 +1,4 @@
-import type { AnswerResult, Quiz, Round, Question, Team, TrickChoice, TrickScoring } from '../types/quiz'
+import type { AnswerResult, GameScreen, Quiz, Round, Question, Team, TrickChoice, TrickScoring } from '../types/quiz'
 
 export const DEFAULT_TRICK_SCORING: TrickScoring = {
   sweetCorrect: 1,
@@ -21,6 +21,11 @@ export const ROUND_TYPE_LABELS: Record<Round['type'], string> = {
 /** Раунды, которые играются в выбранной комнате, в порядке квиза. */
 export function getRoomRounds(quiz: Quiz, roomId: string | null | undefined): Round[] {
   return quiz.rounds.filter((r) => !r.roomId || r.roomId === roomId)
+}
+
+/** Экраны, где команды выбирают вопрос, режим или ставку: здесь играет фоновая музыка. */
+export function isPickScreen(screen: GameScreen) {
+  return screen === 'board' || screen === 'choose' || screen === 'casino-bets'
 }
 
 export function getFlatQuestions(round: Round): Question[] {

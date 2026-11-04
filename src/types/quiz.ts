@@ -79,6 +79,8 @@ export type QuizSounds = {
   open?: string
   reveal?: string
   timerEnd?: string
+  /** Ссылка на плейлист Spotify: играет, пока выбирают вопрос */
+  playlist?: string
 }
 
 export type Quiz = {
