@@ -8,7 +8,8 @@ import { GameStageView } from '../components/GameStageView'
 import { Scoreboard } from '../components/scoreboard/Scoreboard'
 import { HostControls } from '../components/host/HostControls'
 import { toggleFullscreen } from '../lib/fullscreen'
-import { getRoomRounds } from '../lib/gameLogic'
+import { BackgroundMusic } from '../components/host/BackgroundMusic'
+import { getRoomRounds, isPickScreen } from '../lib/gameLogic'
 
 export function HostPage() {
   const { quiz, loading, error } = useLoadedQuiz()
@@ -81,8 +82,11 @@ export function HostPage() {
             onTimerEnd={game.stopTimer}
           />
         </div>
-        <aside className="w-[380px] shrink-0 overflow-y-auto">
-          <HostControls quiz={quiz} controller={controller} />
+        <aside className="w-[380px] shrink-0 flex flex-col gap-3 min-h-0">
+          <div className="flex-1 min-h-0 overflow-y-auto">
+            <HostControls quiz={quiz} controller={controller} />
+          </div>
+          <BackgroundMusic playlistUrl={quiz.sounds.playlist} active={isPickScreen(game.currentScreen)} />
         </aside>
       </div>
 

@@ -118,6 +118,14 @@ export function QuizSettingsForm({ quiz, onChange, onThemeChange, onSoundsChange
           onChange={(e) => onSoundsChange({ timerEnd: e.target.value || undefined })}
         />
       </Field>
+      <Field label="Плейлист Spotify на выбор вопроса (ссылка)">
+        <input
+          className="input"
+          placeholder="https://open.spotify.com/playlist/…"
+          value={quiz.sounds.playlist ?? ''}
+          onChange={(e) => onSoundsChange({ playlist: e.target.value || undefined })}
+        />
+      </Field>
     </div>
   )
 }
